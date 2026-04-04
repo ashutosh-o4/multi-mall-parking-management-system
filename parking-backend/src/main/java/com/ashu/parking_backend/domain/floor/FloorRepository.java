@@ -10,5 +10,5 @@ public interface FloorRepository extends JpaRepository<Floor, Long> {
 
     List<Floor> findAllByMall_Id(Long mallId);
 
-    boolean existsByMall_NameAndMall_Id(String name,Long mallId);
+    boolean existsByNameAndMall_Id(String name,Long mallId);
 }

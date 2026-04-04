@@ -32,5 +32,5 @@ public class Staff extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name="status" , nullable = false)
-    private StaffStatus staffStatus;
+    private StaffStatus status;
 }

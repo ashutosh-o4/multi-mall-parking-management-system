@@ -1,3 +1,8 @@
+app:
+  jwt:
+    secret: -jZ1jsozn5vPzacpu3ojC5KPqcTSsGh91aoqHY_xwT0
+    expiration-ms: 86400000   # 24 hours
+
 spring:
   application:
     name: parking-backend

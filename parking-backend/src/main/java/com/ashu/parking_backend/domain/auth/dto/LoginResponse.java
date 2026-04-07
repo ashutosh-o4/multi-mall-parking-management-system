@@ -11,5 +11,5 @@ public class LoginResponse {
     private String token;
     private String username;
     private String role;
-    private String mallId; //null for SUPER-ADMIN -frontend needs this to scope requests
+    private Long mallId; //null for SUPER-ADMIN -frontend needs this to scope requests
 }

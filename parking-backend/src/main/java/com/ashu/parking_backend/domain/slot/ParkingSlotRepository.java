@@ -17,6 +17,8 @@ public interface ParkingSlotRepository extends JpaRepository<ParkingSlot, Long> 
 
     List<ParkingSlot> findAllByFloor_Mall_Id(Long mallId);
 
+    boolean existsBySlotNumberAndFloor_Id(String slotNumber, Long floorId);
+
     @Query("SELECT s FROM ParkingSlot s WHERE s.floor.mall.id = :mallId " +
             "AND s.status = 'AVAILABLE' " +
             "ORDER BY s.id ASC")

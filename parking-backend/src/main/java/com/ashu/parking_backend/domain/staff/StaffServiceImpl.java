@@ -111,6 +111,12 @@ public class StaffServiceImpl implements StaffService {
         log.info("Password changed for Staff Id: {}", staffId);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Staff getStaffByUsername(String username) {
+        return staffRepository.findByUsername(username).orElseThrow(()-> new ResourceAccessException(("Staff not found: " + username)));
+    }
+
     private void validateRoleCreationPermission(Role creatorRole,Role targetRole){
         if(creatorRole == Role.SUPER_ADMIN && targetRole == Role.ADMIN) return;
         if(creatorRole == Role.ADMIN && targetRole == Role.OFFICER) return;

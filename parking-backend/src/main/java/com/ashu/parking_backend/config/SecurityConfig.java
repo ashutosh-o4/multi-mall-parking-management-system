@@ -41,6 +41,17 @@ public class SecurityConfig {
                 //no session - every request must carry its own jwt
 
                 .authorizeHttpRequests(auth-> auth
+
+                        //Swagger/OpenAPI
+
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs"
+                        ).permitAll()
+
+
                         //public endpoints-no token needed
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("actuator/health").permitAll()

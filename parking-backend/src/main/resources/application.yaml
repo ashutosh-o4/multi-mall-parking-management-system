@@ -29,3 +29,14 @@ logging:
   level:
     com.ashu.parking_backend: DEBUG       # your package — see all logs
     org.hibernate.SQL: DEBUG          # see SQL statements
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    try-it-out-enabled: true        #enables the "Try it out" button
+    operations-sorter: method       #sort endpoints by HTTP method
+    tags-sorter: alpha              #sorts tag group alphabetically
+    display-request-duration: true  #show how long each request took
+  api-docs:
+    path: /v3/api-docs

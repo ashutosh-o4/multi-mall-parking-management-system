@@ -16,5 +16,5 @@ public interface MallAllocationConfigRepository extends JpaRepository<MallAlloca
             "order by m.effectiveFrom desc "+
             "limit 1")
     Optional<MallAllocationConfig> findLatestActiveConfig(@Param("mallId") long mallId,
-                                                          @Param("inUse")LocalDateTime inUse);
+                                                          @Param("now")LocalDateTime now);
 }

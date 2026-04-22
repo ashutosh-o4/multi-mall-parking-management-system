@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -25,7 +24,7 @@ public class MallServiceImpl implements MallService {
     public MallResponse createMall(CreateMallRequest request) {
         log.info("Creating mall with name: {}", request.getName());
 
-        if(mallRepository.existsByName(request.getName().trim())){
+        if (mallRepository.existsByName(request.getName().trim())) {
             throw new BusinessException("Mall with name " + request.getName() + " already exists");
         }
 
@@ -45,13 +44,12 @@ public class MallServiceImpl implements MallService {
     @Transactional(readOnly = true)
     public MallResponse getMallById(Long id) {
         Mall mall = mallRepository.findById(id)
-                .orElseThrow(() ->
-                        new BusinessException("Mall with id " + id + " not found"));
+                .orElseThrow(() -> new BusinessException("Mall with id " + id + " not found"));
         return toResponse(mall);
     }
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<MallResponse> getMallList() {
         return mallRepository.findAll()
                 .stream()
@@ -61,18 +59,19 @@ public class MallServiceImpl implements MallService {
 
     @Override
     public MallResponse updateMallStatus(Long id, UpdateMallStatusRequest request) {
-        Mall mall=mallRepository.findById(id).orElseThrow(()->
-                new BusinessException("Mall with id " + id + " not found"));
+        Mall mall = mallRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Mall with id " + id + " not found"));
 
         mall.setStatus(request.getStatus());
-        //No need to call save() explicitly here
-        //The entity is managed - changes is flushed automatically at transaction commit
+        // No need to call save() explicitly here
+        // The entity is managed - changes is flushed automatically at transaction
+        // commit
         log.info("Mall with id: {} has been updated to {}", id, request.getStatus());
 
         return toResponse(mall);
     }
 
-    //Used private Mapper-keeps mapping logic close to where it's used
+    // Used private Mapper-keeps mapping logic close to where it's used
 
     private MallResponse toResponse(Mall mall) {
         return MallResponse.builder()

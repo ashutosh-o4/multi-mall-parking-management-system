@@ -2,7 +2,6 @@ package com.ashu.parking_backend.common.security;
 
 import com.ashu.parking_backend.domain.staff.Staff;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -26,49 +25,49 @@ public class JwtService {
     @Value("${app.jwt.expiration-ms}")
     private long jwtExpirationMs;
 
-    //Generate a token for a successfully authenticated staff member
-    public String generateToken(Staff staff){
+    // Generate a token for a successfully authenticated staff member
+    public String generateToken(Staff staff) {
         return Jwts.builder()
                 .subject(staff.getUsername())
-                .claim("role",staff.getRole().name())
-                .claim("mallId",staff.getMall()!=null
-                        ? staff.getMall().getId() :null)
+                .claim("role", staff.getRole().name())
+                .claim("mallId", staff.getMall() != null
+                        ? staff.getMall().getId()
+                        : null)
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis()+ jwtExpirationMs))
+                .expiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey())
                 .compact();
     }
 
-    public String extractUsername(String token){
-        return extractClaim(token,Claims::getSubject);
+    public String extractUsername(String token) {
+        return extractClaim(token, Claims::getSubject);
     }
 
-    public String extractRole(String token){
-        return extractClaim(token,claims ->  claims.get("role",String.class));
+    public String extractRole(String token) {
+        return extractClaim(token, claims -> claims.get("role", String.class));
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails){
-        try{
-            final String username=extractUsername(token);
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+        try {
+            final String username = extractUsername(token);
             return username.equals(userDetails.getUsername())
                     && !isTokenExpired(token);
-        }
-        catch (JwtException e){
-            log.warn("JWT validation failed:{}",e.getMessage());
+        } catch (JwtException e) {
+            log.warn("JWT validation failed:{}", e.getMessage());
             return false;
         }
     }
 
-    private boolean isTokenExpired(String token){
-        return extractClaim(token,Claims::getExpiration).before(new Date());
+    private boolean isTokenExpired(String token) {
+        return extractClaim(token, Claims::getExpiration).before(new Date());
     }
 
-    private <T> T extractClaim(String token , Function<Claims,T> claimsResolver){
-        final Claims claims=extractClaims(token);
+    private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+        final Claims claims = extractClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    private Claims extractClaims(String token){
+    private Claims extractClaims(String token) {
         return Jwts.parser()
                 .verifyWith(getSigningKey())
                 .build()

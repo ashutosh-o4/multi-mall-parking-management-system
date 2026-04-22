@@ -1,6 +1,5 @@
 package com.ashu.parking_backend.domain.staff;
 
-import com.ashu.parking_backend.common.enums.MallStatus;
 import com.ashu.parking_backend.common.enums.Role;
 import com.ashu.parking_backend.common.enums.StaffStatus;
 import org.springframework.data.jpa.repository.JpaRepository;

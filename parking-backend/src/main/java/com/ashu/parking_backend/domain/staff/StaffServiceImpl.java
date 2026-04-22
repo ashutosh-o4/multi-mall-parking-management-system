@@ -117,6 +117,15 @@ public class StaffServiceImpl implements StaffService {
         return staffRepository.findByUsername(username).orElseThrow(()-> new ResourceAccessException(("Staff not found: " + username)));
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<StaffResponse> getAllStaff() {
+        return staffRepository.findAll()
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
     private void validateRoleCreationPermission(Role creatorRole,Role targetRole){
         if(creatorRole == Role.SUPER_ADMIN && targetRole == Role.ADMIN) return;
         if(creatorRole == Role.ADMIN && targetRole == Role.OFFICER) return;

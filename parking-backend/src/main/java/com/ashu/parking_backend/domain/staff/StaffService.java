@@ -14,4 +14,5 @@ public interface StaffService {
     StaffResponse updateStaffStatus(Long id, UpdateStaffStatusRequest request);
     void changePassword(Long id,ChangePasswordRequest request);
     Staff getStaffByUsername(String username);
+    List<StaffResponse> getAllStaff();
 }

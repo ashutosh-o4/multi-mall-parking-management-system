@@ -15,6 +15,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/staff")
 @RequiredArgsConstructor
@@ -80,4 +82,13 @@ public class StaffController {
                 return ResponseEntity.ok(
                                 ApiResponse.success(null, "Password changed successfully"));
         }
+
+        @GetMapping
+        @PreAuthorize("hasRole('SUPER_ADMIN')")
+        public ResponseEntity<ApiResponse<List<StaffResponse>>> getAllStaff(){
+            return ResponseEntity.ok(
+                    ApiResponse.success(staffService.getAllStaff())
+            );
+        }
+
 }

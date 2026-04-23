@@ -52,11 +52,11 @@ public class StaffController {
 
         @GetMapping("/mall/{mallId}")
         @PreAuthorize("hasAnyRole('SUPER_ADMIN', 'ADMIN')")
-        public ResponseEntity<ApiResponse<StaffResponse>> getStaffByMallId(
+        public ResponseEntity<ApiResponse<List<StaffResponse>>> getStaffByMallId(
                         @PathVariable Long mallId) {
 
                 return ResponseEntity.ok(
-                                ApiResponse.success(staffService.getStaff(mallId)));
+                                ApiResponse.success(staffService.getStaffByMall(mallId)));
         }
 
         @PatchMapping("/{id}/status")

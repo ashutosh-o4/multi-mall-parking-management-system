@@ -6,6 +6,11 @@ import Login from "./pages/login/Login";
 import SADashboard from "./pages/superadmin/SADashboard";
 import Malls from "./pages/superadmin/Malls";
 import SAStaff from "./pages/superadmin/SAStaff";
+import ADashboard from "./pages/admin/ADashboard";
+import Floors from "./pages/admin/Floors";
+import Slots from "./pages/admin/Slots";
+import AdminStaff from "./pages/admin/AdminStaff";
+import AllocationConfig from "./pages/admin/AllocationConfig";
 
 function App() {
   return (
@@ -47,9 +52,7 @@ function App() {
             path="/admin"
             element={
               <ProtectedRoute allowedRoles={["ADMIN"]}>
-                <DashboardLayout title="Dashboard">
-                  <div>Admin Dashboard</div>
-                </DashboardLayout>
+                <ADashboard />
               </ProtectedRoute>
             }
           />
@@ -57,9 +60,7 @@ function App() {
             path="/admin/floors"
             element={
               <ProtectedRoute allowedRoles={["ADMIN"]}>
-                <DashboardLayout title="Floors">
-                  <div>Floors Page</div>
-                </DashboardLayout>
+                <Floors />
               </ProtectedRoute>
             }
           />
@@ -67,9 +68,7 @@ function App() {
             path="/admin/slots"
             element={
               <ProtectedRoute allowedRoles={["ADMIN"]}>
-                <DashboardLayout title="Slots">
-                  <div>Slots Page</div>
-                </DashboardLayout>
+                <Slots />
               </ProtectedRoute>
             }
           />
@@ -77,9 +76,7 @@ function App() {
             path="/admin/staff"
             element={
               <ProtectedRoute allowedRoles={["ADMIN"]}>
-                <DashboardLayout title="Staff">
-                  <div>Admin Staff Page</div>
-                </DashboardLayout>
+                <AdminStaff />
               </ProtectedRoute>
             }
           />
@@ -87,9 +84,7 @@ function App() {
             path="/admin/allocation-config"
             element={
               <ProtectedRoute allowedRoles={["ADMIN"]}>
-                <DashboardLayout title="Allocation Config">
-                  <div>Allocation Config Page</div>
-                </DashboardLayout>
+                <AllocationConfig />
               </ProtectedRoute>
             }
           />

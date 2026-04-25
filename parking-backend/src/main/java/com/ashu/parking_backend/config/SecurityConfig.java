@@ -72,7 +72,7 @@ public class SecurityConfig {
                         .requestMatchers("/floors/**")
                         .hasAnyRole("SUPER_ADMIN", "ADMIN")
                         .requestMatchers("/slots/**")
-                        .hasAnyRole("SUPER_ADMIN", "ADMIN")
+                        .hasAnyRole("SUPER_ADMIN", "ADMIN","OFFICER")
                         .requestMatchers("/staff/**")
                         .hasAnyRole("SUPER_ADMIN", "ADMIN")
 

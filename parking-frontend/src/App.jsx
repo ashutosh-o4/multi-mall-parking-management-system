@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/layout/ProtectedRoute";
-import { DashboardLayout } from "./components/layout/DashboardLayout";
 import Login from "./pages/login/Login";
 import SADashboard from "./pages/superadmin/SADashboard";
 import Malls from "./pages/superadmin/Malls";
@@ -11,6 +10,8 @@ import Floors from "./pages/admin/Floors";
 import Slots from "./pages/admin/Slots";
 import AdminStaff from "./pages/admin/AdminStaff";
 import AllocationConfig from "./pages/admin/AllocationConfig";
+import OfficerDashboard from "./pages/officer/OfficerDashboard";
+import ActiveEntries from "./pages/officer/ActiveEntries";
 
 function App() {
   return (
@@ -94,9 +95,7 @@ function App() {
             path="/officer"
             element={
               <ProtectedRoute allowedRoles={["OFFICER"]}>
-                <DashboardLayout title="Dashboard">
-                  <div>Officer Dashboard</div>
-                </DashboardLayout>
+                <OfficerDashboard />
               </ProtectedRoute>
             }
           />
@@ -104,9 +103,7 @@ function App() {
             path="/officer/active"
             element={
               <ProtectedRoute allowedRoles={["OFFICER"]}>
-                <DashboardLayout title="Active Entries">
-                  <div>Active Entries Page</div>
-                </DashboardLayout>
+                <ActiveEntries />
               </ProtectedRoute>
             }
           />

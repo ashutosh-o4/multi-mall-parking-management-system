@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { Badge } from "../ui/Badge";
 
@@ -105,6 +105,46 @@ export function Sidebar() {
             </NavLink>
           );
         })}
+
+        {/* Change Password link */}
+        {(() => {
+          const isActive = location.pathname === "/change-password";
+          return (
+            <NavLink
+              to="/change-password"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "10px 14px",
+                borderRadius: "8px",
+                textDecoration: "none",
+                marginTop: "8px",
+                borderTop: "1px solid var(--border-color)",
+                paddingTop: "16px",
+                fontWeight: isActive ? 600 : 400,
+                color: isActive ? "var(--accent)" : "var(--text-secondary)",
+                backgroundColor: isActive ? "rgba(79, 70, 229, 0.1)" : "transparent",
+                transition: "background-color 0.15s ease, color 0.15s ease",
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = "var(--bg-primary)";
+                  e.currentTarget.style.color = "var(--text-primary)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.color = "var(--text-secondary)";
+                }
+              }}
+            >
+              <span style={{ fontSize: "1.1rem", lineHeight: 1 }}>🔐</span>
+              <span style={{ fontSize: "0.875rem" }}>Change Password</span>
+            </NavLink>
+          );
+        })()}
       </nav>
 
       {/* User section */}

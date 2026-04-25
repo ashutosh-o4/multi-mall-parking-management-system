@@ -12,6 +12,8 @@ import AdminStaff from "./pages/admin/AdminStaff";
 import AllocationConfig from "./pages/admin/AllocationConfig";
 import OfficerDashboard from "./pages/officer/OfficerDashboard";
 import ActiveEntries from "./pages/officer/ActiveEntries";
+import ChangePassword from "./pages/ChangePassword";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -108,8 +110,18 @@ function App() {
             }
           />
 
+          {/* Change Password — all roles */}
+          <Route
+            path="/change-password"
+            element={
+              <ProtectedRoute allowedRoles={["SUPER_ADMIN", "ADMIN", "OFFICER"]}>
+                <ChangePassword />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Catch-all */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

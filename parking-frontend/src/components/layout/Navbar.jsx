@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { useTheme } from "../../hooks/useTheme";
 
 export function Navbar({ title }) {
   const { username } = useAuth();
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <header
@@ -61,10 +63,16 @@ export function Navbar({ title }) {
 
         {/* Username */}
         <span
+          onClick={() => navigate("/change-password")}
+          title="Change password"
           style={{
             fontSize: "0.8125rem",
             color: "var(--text-secondary)",
+            cursor: "pointer",
+            transition: "color 0.15s ease",
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-secondary)")}
         >
           Hello, {username}
         </span>

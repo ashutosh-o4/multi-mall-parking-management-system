@@ -10,6 +10,10 @@ spring:
     url: jdbc:mysql://localhost:3306/parking_db
     username: parking_user
     password: park12
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 20000
 
   jpa:
     hibernate:

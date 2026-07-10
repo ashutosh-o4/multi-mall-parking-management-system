@@ -1,0 +1,37 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# Model weights (large binary files)
+*.pt
+*.pth
+*.weights
+
+# Outputs (generated at runtime)
+outputs/annotated_images/*
+outputs/test_images/*
+!outputs/annotated_images/.gitkeep
+!outputs/test_images/.gitkeep
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Training data (too large for git)
+training/data/images/
+training/data/labels/

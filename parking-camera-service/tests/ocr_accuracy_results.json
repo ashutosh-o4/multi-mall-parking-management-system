@@ -1,0 +1,28 @@
+{
+  "results": [
+    {
+      "image": "car1.jpg",
+      "status": "success",
+      "expected": "MH12AB1234",
+      "expected_clean": "MH12AB1234",
+      "actual": "23 1B GOMCA1 4 HR26DO5551 IND",
+      "actual_clean": "23 1B GOMCA1 4 HR26DO5551 IND",
+      "ocr_confidence": 0.3016,
+      "plate_match": false,
+      "char_accuracy": 4.17,
+      "char_matches": 1,
+      "total_chars": 24,
+      "cer": 0.9583,
+      "edit_distance": 20,
+      "inference_time_ms": 10217.96
+    }
+  ],
+  "metrics": {
+    "plate_accuracy_percent": 0.0,
+    "char_accuracy_percent": 4.17,
+    "correct_plates": 0,
+    "total_plates": 1,
+    "correct_chars": 1,
+    "total_chars": 24
+  }
+}

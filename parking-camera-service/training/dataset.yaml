@@ -1,0 +1,19 @@
+# YOLOv11 Dataset Configuration for License Plate Detection
+# 
+# This file is used by the Ultralytics YOLO training pipeline.
+# Paths below are for Google Colab. They will be auto-populated
+# when you download the dataset via the Roboflow Python SDK.
+#
+# Paper ref: Section 3.2 — "The dataset was split into 70% training,
+# 20% validation, and 10% testing datasets"
+
+# Paths (update after Roboflow download on Colab)
+train: /content/data/train/images
+val: /content/data/valid/images
+test: /content/data/test/images
+
+# Number of classes
+nc: 1
+
+# Class names
+names: ['license_plate']

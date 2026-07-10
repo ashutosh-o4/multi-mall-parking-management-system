@@ -32,3 +32,6 @@ replay_pid*
 .vscode/
 .agents
 graphify-out
+
+camera.md
+ticket_backend_plan.md
